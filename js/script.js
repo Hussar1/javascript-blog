@@ -1,9 +1,9 @@
-{'use strict';
+{
+'use strict';
 
-// document.getElementById('test-button').addEventListener('click', function(){
-//     const links = document.querySelectorAll('.titles a');
-//     console.log('links:', links);
-//   });
+const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
 
 const titleClickHandler = function() {
     console.log('Link was clicked!');
@@ -40,10 +40,6 @@ const titleClickHandler = function() {
     /* [DONE] add class 'active' to the correct article */
     targetArticle.classList.add('active');
 }
-
-const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles';
 
 function generateTitleLinks() {
 
