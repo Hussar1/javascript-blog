@@ -54,17 +54,17 @@
     /* for each article */
     const articles = document.querySelectorAll(optArticleSelector);
     console.log('articles: ', articles);
-    
-    for(let article of articles) {    
+
+    for(let article of articles) {
 
       /* get the article id */
       const articleId = article.getAttribute('id');
-      console.log('articleId: ', articleId);  
+      console.log('articleId: ', articleId);
 
-      /* find the title element */  
+      /* find the title element */
       /* get the title from the title element */
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-      console.log('articleTitle: ', articleTitle);  
+      console.log('articleTitle: ', articleTitle);
 
       /* create HTML of the link */
       const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
@@ -78,7 +78,7 @@
 
     const links = document.querySelectorAll('.titles a');
     console.log('links: ', links);
-  
+
     for(let link of links) {
       link.addEventListener('click', titleClickHandler);
     }
