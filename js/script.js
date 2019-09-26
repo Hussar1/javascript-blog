@@ -10,36 +10,28 @@
 
   const titleClickHandler = function() {
     console.log('Link was clicked!');
-    console.log('event:', event);
+    // console.log('event:', event);
     event.preventDefault();
     const clickedElement = this;
-
     /* [DONE] remove class 'active' from all article links  */
     const activeLinks = document.querySelectorAll('.titles a.active');
-
     for(let activeLink of activeLinks) {
       activeLink.classList.remove('active');
     }
-
     /* [DONE] add class 'active' to the clicked link */
-    console.log('clickedElement: ', clickedElement);
+    // console.log('clickedElement: ', clickedElement);
     clickedElement.classList.add('active');
-
     /* [DONE] remove class 'active' from all articles */
     const activeArticles = document.querySelectorAll('.posts .active');
-
     for(let activeArticle of activeArticles){
       activeArticle.classList.remove('active');
     }
-
     /* [DONE] get 'href' attribute from the clicked link */
     const articleSelector = clickedElement.getAttribute('href');
     console.log('clickedElement\'s attribute: ', articleSelector);
-
     /* [DONE] find the correct article using the selector (value of 'href' attribute) */
     const targetArticle = document.querySelector(articleSelector);
     //console.log('targetArticle: ', targetArticle);
-
     /* [DONE] add class 'active' to the correct article */
     targetArticle.classList.add('active');
   };
@@ -52,27 +44,20 @@
     titleList.innerHTML = '';
     console.log('Removed contents of titleList.');
 
-
     let html = '';
-
     /* for each article */
     const articles = document.querySelectorAll(optArticleSelector + customSelector);
     // console.log('generateTitleLinks() articles: ', articles);
-
     for(let article of articles) {
-
       /* get the article id */
       const articleId = article.getAttribute('id');
       // console.log('articleId: ', articleId);
-
       /* find the title element, get the title from the title element */
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
       // console.log('articleTitle: ', articleTitle);
-
       /* create HTML of the link */
       const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
       // console.log('linkHTML: ', linkHTML);
-
       /* insert link into titleList */
       html = html + linkHTML;
       // console.log('html: ', html);
@@ -81,7 +66,6 @@
 
     const links = document.querySelectorAll('.titles a');
     // console.log('links: ', links);
-
     for(let link of links) {
       link.addEventListener('click', titleClickHandler);
     }
@@ -128,7 +112,7 @@
 
   function tagClickHandler(event) {
     console.log('Tag was clicked!');
-    console.log('event:', event);
+    // console.log('event:', event);
     /* prevent default action for this event */
     event.preventDefault();
     /* make new constant named "clickedElement" and give it the value of "this" */
@@ -183,7 +167,7 @@
       let html = '';
       // get author from data-author attribute
       const articleAuthor = article.getAttribute('data-author');
-      console.log('Article author: ', articleAuthor);
+      // console.log('Article author: ', articleAuthor);
       // generate HTML of the link
       const authorLinkHTML = '<a href="#author-' + articleAuthor + '">' + articleAuthor + '</a>';
       // console.log('Author\'s link HTML: ', authorLinkHTML);
@@ -200,7 +184,7 @@
 
   function authorClickHandler(event) {
     console.log('Author was clicked!');
-    console.log('authorClickHandler event: ', event);
+    // console.log('authorClickHandler event: ', event);
     // prevent default action for this event
     event.preventDefault();
     // make new constant named "clickedElement" and give it the value of "this"
