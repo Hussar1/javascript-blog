@@ -4,7 +4,8 @@
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
-    optArticleTagsSelector = '.post-tags .list';
+    optArticleTagsSelector = '.post-tags .list',
+    optArticleAutorSelector = '.post-author';
 
   const titleClickHandler = function() {
     console.log('Link was clicked!');
@@ -166,4 +167,9 @@
   }
 
   addClickListenersToTags();
+
+
+
+
+
 }
