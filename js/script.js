@@ -169,7 +169,9 @@
   addClickListenersToTags();
 
 
-
+  function generateAuthors() {
+    
+  }
 
 
 }
