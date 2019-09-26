@@ -170,7 +170,8 @@
 
 
   function generateAuthors() {
-    
+    // find all articles
+    const articles = document.querySelectorAll(optArticleSelector);
   }
 
 
