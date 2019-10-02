@@ -109,7 +109,7 @@ body {
   margin: 0 10px 0 0;
 }
 
-.list .tags ul {
+.list.tags li {
   display: inline;
 }
 
