@@ -5,7 +5,8 @@
     articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
     tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
     authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
-    tagCloudLink: Handlebars.compile(document.querySelector('#template-tagCloud-link').innerHTML)
+    tagCloudLink: Handlebars.compile(document.querySelector('#template-tagCloud-link').innerHTML),
+    allAuthorsLink: Handlebars.compile(document.querySelector('#template-allAuthors-link').innerHTML)
   };
 
   const opt = {
@@ -174,7 +175,7 @@
     }
     // [NEW] add html from allTagsHTML to tagList
     tagList.innerHTML = templates.tagCloudLink(allTagsData);
-    console.log('allTagsData:', allTagsData);
+    // console.log('allTagsData:', allTagsData);
   }
 
   generateTags();
@@ -258,11 +259,15 @@
     }
     // console.log('allAuthores', allAuthors);
     const authorList = document.querySelector(opt.authorListSelector);
-    let allAuthorsHTML = '';
+    // let allAuthorsHTML = '';
+    const allAuthorsData = {authors: []};
     for (let author in allAuthors) {
-      allAuthorsHTML += '<li><a href="#author-' + author + '">' + author + '</a></li>';
+      // allAuthorsHTML += '<li><a href="#author-' + author + '">' + author + '</a></li>';
+      allAuthorsData.authors.push({
+        author: author
+      });
     }
-    authorList.innerHTML = allAuthorsHTML;
+    authorList.innerHTML = templates.allAuthorsLink(allAuthorsData);
   }
 
   generateAuthors();
