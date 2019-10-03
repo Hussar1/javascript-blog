@@ -4,7 +4,8 @@
   const templates = {
     articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
     tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
-    authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
+    authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+    tagCloudLink: Handlebars.compile(document.querySelector('#template-tagCloud-link').innerHTML)
   };
 
   const opt = {
@@ -90,7 +91,7 @@
   function calculateTagsParams(tags) {
     const params = {max : 0, min : 999999};
     for (let tag in tags) {
-      console.log(tag + ' is used ' + tags[tag] + ' times');
+      // console.log(tag + ' is used ' + tags[tag] + ' times');
       if (tags[tag] > params.max){
         params.max = tags[tag];
       }
@@ -155,19 +156,25 @@
     /* [NEW] find list of tags in right column */
     const tagList = document.querySelector(opt.tagsListSelector);
     const tagsParams = calculateTagsParams(allTags);
-    console.log('tagParams:', tagsParams);
+    // console.log('tagParams:', tagsParams);
     // [NEW] create variable for all links HTML code
-    let allTagsHTML = '';
+    // let allTagsHTML = '';
+    const allTagsData = {tags: []};
     // [NEW] START LOOP: for each tagin allTags:
     for(let tag in allTags) {
-      const tagLinkHTML = '<li>' + calculateTagClass(allTags[tag], tagsParams) + '</li>';
-      console.log('tagLinkHTML:', tagLinkHTML);
+      // const tagLinkHTML = '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li>';
+      // console.log('tagLinkHTML:', tagLinkHTML);
       // [NEW] generate code of a link and add it to allTagsHTML
-      allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a></li> ';
+      allTagsData.tags.push({
+        tag: tag,
+        count: allTags[tag],
+        className: calculateTagClass(allTags[tag], tagsParams)
+      });
       // [NEW] END LOOP: for each tag in allTags
     }
     // [NEW] add html from allTagsHTML to tagList
-    tagList.innerHTML = allTagsHTML;
+    tagList.innerHTML = templates.tagCloudLink(allTagsData);
+    console.log('allTagsData:', allTagsData);
   }
 
   generateTags();
@@ -249,7 +256,7 @@
         allAuthors[articleAuthor]++;
       }
     }
-    console.log('allAuthores', allAuthors);
+    // console.log('allAuthores', allAuthors);
     const authorList = document.querySelector(opt.authorListSelector);
     let allAuthorsHTML = '';
     for (let author in allAuthors) {

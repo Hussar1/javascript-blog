@@ -130,6 +130,10 @@ body {
   display: inline;
 }
 
+ul.list.tags > ul {
+  padding: 0;
+}
+
 .tag-size-5 {
   font-size: 200%;
   opacity: 1;
