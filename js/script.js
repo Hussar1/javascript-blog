@@ -1,7 +1,9 @@
+/* eslint-disable no-undef */
 {
   'use strict';
 
   const templates = {
+    // eslint-disable-next-line no-undef
     articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
     tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
     authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
